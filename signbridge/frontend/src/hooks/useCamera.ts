@@ -1,5 +1,5 @@
 /**
- * useCamera – manages webcam lifecycle, frame capture, and permission state.
+ * useCamera: Manages webcam lifecycle, frame capture, and permission state.
  */
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { CameraStatus } from '../types'

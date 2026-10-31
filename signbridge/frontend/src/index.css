@@ -4,71 +4,141 @@
 
 @layer base {
   :root {
-    --camera-border: theme('colors.brand.500');
+    color-scheme: dark;
   }
 
   html {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     scroll-behavior: smooth;
+    background-color: #111418;
   }
 
   body {
-    @apply bg-gray-950 text-gray-100 antialiased min-h-screen;
+    background-color: #111418;
+    color: #e2e8f0;
+    antialiased: true;
+    min-height: 100vh;
   }
 
   * {
-    @apply box-border;
+    box-sizing: border-box;
+    box-shadow: none !important;
   }
 }
 
 @layer components {
   .card {
-    @apply bg-gray-900 border border-gray-800 rounded-2xl;
+    background-color: #181c22;
+    border: 1px solid #2c3542;
+    border-radius: 2px;
   }
 
   .btn {
-    @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-sm
-           transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2
-           focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-gray-950
-           disabled:opacity-50 disabled:cursor-not-allowed;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: 2px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    border: 1px solid transparent;
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+    cursor: pointer;
+  }
+
+  .btn:focus-visible {
+    outline: 2px solid #0284c7;
+    outline-offset: 1px;
+  }
+
+  .btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
   }
 
   .btn-primary {
-    @apply btn bg-brand-600 hover:bg-brand-500 text-white;
+    background-color: #0369a1;
+    color: #ffffff;
+    border-color: #0284c7;
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background-color: #0284c7;
   }
 
   .btn-secondary {
-    @apply btn bg-gray-800 hover:bg-gray-700 text-gray-100;
+    background-color: #262d37;
+    color: #e2e8f0;
+    border-color: #3d4858;
+  }
+
+  .btn-secondary:hover:not(:disabled) {
+    background-color: #313a47;
+    border-color: #4b586d;
   }
 
   .btn-danger {
-    @apply btn bg-red-700 hover:bg-red-600 text-white;
+    background-color: #991b1b;
+    color: #ffffff;
+    border-color: #b91c1c;
+  }
+
+  .btn-danger:hover:not(:disabled) {
+    background-color: #b91c1c;
   }
 
   .btn-success {
-    @apply btn bg-emerald-700 hover:bg-emerald-600 text-white;
+    background-color: #166534;
+    color: #ffffff;
+    border-color: #15803d;
+  }
+
+  .btn-success:hover:not(:disabled) {
+    background-color: #15803d;
   }
 
   .confidence-bar {
-    @apply h-2 rounded-full bg-gray-800 overflow-hidden;
+    height: 6px;
+    border-radius: 1px;
+    background-color: #262d37;
+    overflow: hidden;
+    border: 1px solid #374151;
   }
 
   .confidence-fill {
-    @apply h-full rounded-full transition-all duration-300;
+    height: 100%;
+    transition: width 200ms ease;
   }
 
-  .camera-ring {
-    @apply ring-4 ring-brand-500 ring-offset-2 ring-offset-gray-950;
+  /* Skeleton loader styling */
+  .skeleton-block {
+    background: #1f242c;
+    border: 1px solid #2c3542;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skeleton-block::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
   }
 
   .scrollbar-thin {
     scrollbar-width: thin;
-    scrollbar-color: theme('colors.gray.700') transparent;
+    scrollbar-color: #3d4858 transparent;
   }
 }
 
-/* Camera video element */
+/* Mirror view for user signing naturally */
 video {
-  transform: scaleX(-1); /* Mirror for selfie-view */
+  transform: scaleX(-1);
 }
-

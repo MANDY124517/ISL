@@ -1,5 +1,5 @@
 /**
- * useSpeech – Text-to-Speech and Speech-to-Text via Web Speech API.
+ * useSpeech: Text-to-Speech and Speech-to-Text via Web Speech API.
  */
 import { useCallback, useRef, useState } from 'react'
 

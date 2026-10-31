@@ -1,7 +1,15 @@
 /**
- * SentenceBuilder – ISL user's sentence composition panel.
+ * SentenceBuilder: Conversational buffer assembling recognized ISL signs into sentences.
+ * Precision architectural design: zero emojis, crisp 2px corners, high-contrast typography.
  */
-import { RotateCcw, Trash2, Volume2, VolumeX, PlusCircle, ArrowRight } from 'lucide-react'
+import {
+  PlusIcon,
+  UndoIcon,
+  TrashIcon,
+  VolumeIcon,
+  VolumeMuteIcon,
+  SendIcon,
+} from './icons'
 import { cn } from '../utils'
 
 interface SentenceBuilderProps {
@@ -35,113 +43,122 @@ export function SentenceBuilder({
   const canAdd = Boolean(currentPrediction && currentConfidence >= confidenceThreshold)
 
   return (
-    <div className="card flex flex-col gap-0">
+    <div className="card flex flex-col">
       {/* Header */}
-      <div className="px-4 py-3 border-b border-gray-800">
-        <h2 className="font-semibold text-gray-100">Recognized Message</h2>
-        <p className="text-xs text-gray-500 mt-0.5">ISL → English</p>
+      <div className="px-4 py-3 border-b border-[#2c3542] bg-[#14171c] flex items-center justify-between">
+        <div>
+          <h2 className="font-semibold text-sm text-gray-200">Sentence Construction Buffer</h2>
+          <p className="text-[11px] text-gray-400 font-mono mt-0.5">ISL to English Text Translation</p>
+        </div>
+        <span className="text-[11px] font-mono text-gray-400 bg-[#1f242c] border border-[#2c3542] px-2 py-0.5 rounded-sm">
+          {sentence.length} {sentence.length === 1 ? 'word' : 'words'}
+        </span>
       </div>
 
-      {/* Sentence display */}
-      <div className="px-4 py-4 min-h-[80px] flex items-center">
+      {/* Main sentence text display */}
+      <div className="px-4 py-4 min-h-[72px] flex items-center bg-[#111418] border-b border-[#2c3542]">
         {sentenceText ? (
-          <p className="text-xl font-semibold text-white leading-relaxed">
+          <p className="text-xl font-bold text-gray-100 font-mono leading-relaxed">
             "{sentenceText}"
           </p>
         ) : (
-          <p className="text-gray-600 italic text-sm">
-            Start signing to build a message…
+          <p className="text-gray-500 font-mono text-xs">
+            Signs recognized from the camera will queue here for confirmation.
           </p>
         )}
       </div>
 
-      {/* Word chips */}
+      {/* Token chips */}
       {sentence.length > 0 && (
-        <div className="px-4 pb-3 flex flex-wrap gap-2">
+        <div className="px-4 py-2.5 flex flex-wrap gap-1.5 bg-[#14171c] border-b border-[#2c3542]">
           {sentence.map((word, i) => (
             <span
               key={i}
-              className="bg-brand-900/50 border border-brand-700 text-brand-200 text-sm px-2.5 py-0.5 rounded-full"
+              className="bg-[#1f242c] border border-[#2c3542] text-gray-200 text-xs font-mono px-2 py-0.5 rounded-sm flex items-center gap-1"
             >
+              <span className="text-gray-500 text-[10px]">{i + 1}.</span>
               {word}
             </span>
           ))}
         </div>
       )}
 
-      {/* Add prediction button */}
+      {/* Append candidate prediction button */}
       {currentPrediction && (
-        <div className="px-4 pb-3">
+        <div className="px-4 py-2.5 border-b border-[#2c3542] bg-[#181c22]">
           <button
             className={cn(
               'btn w-full justify-center gap-2',
               canAdd
-                ? 'bg-brand-700 hover:bg-brand-600 text-white'
-                : 'bg-gray-800 text-gray-500 cursor-not-allowed',
+                ? 'btn-primary'
+                : 'bg-[#1f242c] text-gray-500 border border-[#2c3542] cursor-not-allowed',
             )}
             onClick={onAddWord}
             disabled={!canAdd}
-            title={canAdd ? 'Add this word to sentence' : 'Confidence too low'}
+            title={canAdd ? 'Append detected sign to sentence' : 'Confidence below threshold'}
           >
-            <PlusCircle className="w-4 h-4" />
-            Add "{currentPrediction}"
-            {!canAdd && <span className="text-xs opacity-70">(low confidence)</span>}
+            <PlusIcon className="w-4 h-4" />
+            Append "{currentPrediction}"
+            {!canAdd && (
+              <span className="text-xs font-mono text-gray-400">
+                (Score: {Math.round(currentConfidence * 100)}% &lt; {Math.round(confidenceThreshold * 100)}%)
+              </span>
+            )}
           </button>
         </div>
       )}
 
-      {/* Controls */}
-      <div className="px-4 pb-4 flex flex-wrap gap-2 border-t border-gray-800 pt-3">
+      {/* Action toolstrip */}
+      <div className="px-4 py-3 flex flex-wrap items-center gap-2 bg-[#181c22]">
         <button
-          className="btn-secondary"
+          className="btn btn-secondary"
           onClick={onRemoveLastWord}
           disabled={sentence.length === 0}
-          aria-label="Undo last word"
-          title="Remove last word"
+          aria-label="Remove the last appended word"
+          title="Undo last word"
         >
-          <RotateCcw className="w-4 h-4" />
-          Undo
+          <UndoIcon className="w-4 h-4" />
+          Undo Word
         </button>
 
         <button
-          className="btn-danger"
+          className="btn btn-danger"
           onClick={onClearSentence}
           disabled={sentence.length === 0}
-          aria-label="Clear sentence"
-          title="Clear all words"
+          aria-label="Clear all words from buffer"
+          title="Clear sentence"
         >
-          <Trash2 className="w-4 h-4" />
-          Clear
+          <TrashIcon className="w-4 h-4" />
+          Clear All
         </button>
 
         <button
           className={cn(
             'btn',
             speaking
-              ? 'bg-amber-700 hover:bg-amber-600 text-white'
-              : 'bg-emerald-700 hover:bg-emerald-600 text-white',
+              ? 'btn-danger'
+              : 'btn-secondary',
           )}
           onClick={speaking ? onStopSpeak : onSpeak}
           disabled={!sentenceText}
-          aria-label={speaking ? 'Stop speech' : 'Speak sentence'}
-          title={speaking ? 'Stop speaking' : 'Speak the message aloud'}
+          aria-label={speaking ? 'Stop speech audio' : 'Speak composed sentence'}
+          title={speaking ? 'Halt speech output' : 'Vocalize sentence via Text-to-Speech'}
         >
-          {speaking ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-          {speaking ? 'Stop' : 'Speak'}
+          {speaking ? <VolumeMuteIcon className="w-4 h-4" /> : <VolumeIcon className="w-4 h-4" />}
+          {speaking ? 'Stop Audio' : 'Vocalize'}
         </button>
 
         <button
-          className="btn-primary ml-auto"
+          className="btn btn-primary ml-auto"
           onClick={onConfirm}
           disabled={sentence.length === 0}
-          aria-label="Send message to conversation"
+          aria-label="Dispatch message to non-signer interface"
           title="Send to conversation"
         >
-          Send
-          <ArrowRight className="w-4 h-4" />
+          <SendIcon className="w-4 h-4" />
+          Dispatch Message
         </button>
       </div>
     </div>
   )
 }
-

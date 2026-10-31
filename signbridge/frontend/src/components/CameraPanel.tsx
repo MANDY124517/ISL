@@ -1,9 +1,17 @@
 /**
- * CameraPanel – webcam preview with prediction overlay, FPS control, and accessibility features.
+ * CameraPanel: Webcam interface with live posture classification overlay and FPS selection.
+ * Meets accessibility standards without harsh gradients, emojis, or liquid glass effects.
  */
-import { Camera, CameraOff, Video, Sliders, Volume2, VolumeX, FlipHorizontal } from 'lucide-react'
 import { useState } from 'react'
 import type { RefObject } from 'react'
+import {
+  VideoIcon,
+  VideoOffIcon,
+  SlidersIcon,
+  VolumeIcon,
+  VolumeMuteIcon,
+  FlipIcon,
+} from './icons'
 import { cn, confidenceColor, confidenceTextColor, formatConfidence } from '../utils'
 import type { CameraStatus } from '../types'
 
@@ -38,149 +46,168 @@ export function CameraPanel({
 }: CameraPanelProps) {
   const [mirrored, setMirrored] = useState(true)
   const isActive = status === 'active'
+  const isRequesting = status === 'requesting'
 
   return (
-    <div className="card overflow-hidden flex flex-col">
-      {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-gray-800">
+    <div className="card flex flex-col">
+      {/* Header bar */}
+      <div className="flex items-center justify-between px-4 py-3 border-b border-[#2c3542] bg-[#14171c]">
         <div className="flex items-center gap-2">
-          <Video className="w-5 h-5 text-brand-400" />
-          <span className="font-semibold text-gray-100">Camera</span>
+          <VideoIcon className="w-4 h-4 text-[#0284c7]" />
+          <span className="font-semibold text-sm text-gray-200">Camera Interface</span>
           {isDemo && (
-            <span className="text-xs bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-2 py-0.5 rounded-full font-medium">
-              DEMO
+            <span className="text-[10px] bg-[#1f242c] text-amber-300 border border-[#a16207] px-1.5 py-0.2 rounded-sm font-mono font-medium">
+              SIMULATION
             </span>
           )}
         </div>
-        <div className="flex items-center gap-3">
+
+        <div className="flex items-center gap-2">
           {/* Audio Chime Toggle */}
           <button
             onClick={onToggleSound}
             className={cn(
-              'p-1.5 rounded-lg border transition-colors',
+              'p-1.5 rounded-sm border transition-colors',
               soundEnabled
-                ? 'bg-brand-900/40 border-brand-700 text-brand-300'
-                : 'bg-gray-800 border-gray-700 text-gray-500',
+                ? 'bg-[#1f242c] border-[#0284c7] text-[#0284c7]'
+                : 'bg-[#181c22] border-[#2c3542] text-gray-500',
             )}
-            title={soundEnabled ? 'Recognition chime ON' : 'Recognition chime MUTED'}
-            aria-label="Toggle chime"
+            title={soundEnabled ? 'Recognition chime active' : 'Recognition chime muted'}
+            aria-label="Toggle recognition audio tone"
           >
-            {soundEnabled ? <Volume2 className="w-3.5 h-3.5" /> : <VolumeX className="w-3.5 h-3.5" />}
+            {soundEnabled ? <VolumeIcon className="w-3.5 h-3.5" /> : <VolumeMuteIcon className="w-3.5 h-3.5" />}
           </button>
 
           {/* Mirror Toggle */}
           <button
             onClick={() => setMirrored(!mirrored)}
             className={cn(
-              'p-1.5 rounded-lg border transition-colors',
+              'p-1.5 rounded-sm border transition-colors',
               mirrored
-                ? 'bg-brand-900/40 border-brand-700 text-brand-300'
-                : 'bg-gray-800 border-gray-700 text-gray-500',
+                ? 'bg-[#1f242c] border-[#0284c7] text-[#0284c7]'
+                : 'bg-[#181c22] border-[#2c3542] text-gray-500',
             )}
-            title={mirrored ? 'Mirror View ON' : 'Mirror View OFF'}
-            aria-label="Toggle mirror"
+            title={mirrored ? 'Mirror view active' : 'Mirror view off'}
+            aria-label="Toggle camera horizontal mirror"
           >
-            <FlipHorizontal className="w-3.5 h-3.5" />
+            <FlipIcon className="w-3.5 h-3.5" />
           </button>
 
-          {/* Status indicator */}
-          <div className="flex items-center gap-1.5 pl-1 border-l border-gray-800">
+          {/* Connection status dot */}
+          <div className="flex items-center gap-1.5 pl-2 border-l border-[#2c3542]">
             <span
               className={cn(
-                'w-2.5 h-2.5 rounded-full',
-                isActive ? 'bg-emerald-500 animate-pulse' : 'bg-gray-600',
+                'w-2 h-2 rounded-none',
+                isActive ? 'bg-emerald-500' : isRequesting ? 'bg-amber-500' : 'bg-gray-600',
               )}
             />
-            <span className="text-xs text-gray-400">{isActive ? 'Live' : 'Off'}</span>
+            <span className="text-xs font-mono text-gray-400">
+              {isActive ? 'ACTIVE' : isRequesting ? 'INIT' : 'OFFLINE'}
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Video area */}
-      <div className="relative bg-gray-950 aspect-video flex items-center justify-center overflow-hidden">
-        {/* Video element */}
+      {/* Video Viewport */}
+      <div className="relative bg-[#0d1014] aspect-video flex items-center justify-center overflow-hidden border-b border-[#2c3542]">
+        {/* Mirror-capable video feed */}
         <video
           ref={videoRef}
           autoPlay
           playsInline
           muted
           className={cn(
-            'w-full h-full object-cover transition-opacity duration-300',
+            'w-full h-full object-cover',
             mirrored && 'scale-x-[-1]',
-            isActive ? 'opacity-100' : 'opacity-0 absolute inset-0',
+            isActive ? 'block' : 'hidden',
           )}
-          aria-label="Camera preview"
+          aria-label="ISL camera video stream"
         />
 
-        {/* Placeholder when not active */}
-        {!isActive && (
-          <div className="flex flex-col items-center gap-3 text-gray-500">
-            <CameraOff className="w-16 h-16 opacity-60" />
-            <p className="text-sm text-center px-4 text-gray-400">
-              {error ?? 'Click Start Camera to begin signing'}
-            </p>
+        {/* Loading skeleton when requesting permissions */}
+        {isRequesting && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 bg-[#111418]">
+            <div className="w-12 h-12 border-2 border-[#2c3542] border-t-[#0284c7] animate-spin rounded-none" />
+            <p className="text-xs text-gray-300 font-mono">Initializing camera device...</p>
           </div>
         )}
 
-        {/* Prediction overlay */}
+        {/* Inactive camera placeholder */}
+        {!isActive && !isRequesting && (
+          <div className="flex flex-col items-center gap-3 text-gray-400 p-6 text-center">
+            <VideoOffIcon className="w-10 h-10 text-gray-600" />
+            <div className="space-y-1">
+              <p className="text-sm font-medium text-gray-300">
+                {error ? `Camera Error: ${error}` : 'Camera stream is currently paused'}
+              </p>
+              <p className="text-xs text-gray-500 font-mono">
+                Click "Start Camera" below to initiate real-time ISL posture recognition.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Live prediction overlay box (flat, solid, high-contrast, zero glassmorphism) */}
         {isActive && prediction && (
-          <div className="absolute bottom-4 left-4 right-4 pointer-events-none">
-            <div className="bg-gray-950/85 backdrop-blur-md rounded-xl px-4 py-3 border border-gray-700 shadow-xl">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-[11px] font-medium uppercase tracking-wider text-gray-400">
-                    Recognized Sign
-                  </p>
-                  <p className="text-2xl font-bold text-white tracking-wide">{prediction}</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-[11px] font-medium uppercase tracking-wider text-gray-400 mb-0.5">
-                    Confidence
-                  </p>
-                  <p className={cn('text-lg font-bold', confidenceTextColor(confidence))}>
-                    {formatConfidence(confidence)}
-                  </p>
-                  <div className="confidence-bar w-24 mt-1">
-                    <div
-                      className={cn('confidence-fill', confidenceColor(confidence))}
-                      style={{ width: `${Math.min(100, Math.max(0, confidence * 100))}%` }}
-                    />
-                  </div>
+          <div className="absolute bottom-3 left-3 right-3 pointer-events-none">
+            <div className="bg-[#14171c] border border-[#2c3542] px-4 py-3 rounded-sm flex items-center justify-between">
+              <div>
+                <p className="text-[10px] font-mono uppercase tracking-wider text-gray-400">
+                  Detected Sign Class
+                </p>
+                <p className="text-2xl font-bold text-gray-100 font-mono tracking-wide">
+                  {prediction}
+                </p>
+              </div>
+              <div className="text-right">
+                <p className="text-[10px] font-mono uppercase tracking-wider text-gray-400 mb-0.5">
+                  Classifier Confidence
+                </p>
+                <p className={cn('text-base font-bold font-mono', confidenceTextColor(confidence))}>
+                  {formatConfidence(confidence)}
+                </p>
+                <div className="confidence-bar w-28 mt-1">
+                  <div
+                    className={cn('confidence-fill', confidenceColor(confidence))}
+                    style={{ width: `${Math.min(100, Math.max(0, confidence * 100))}%` }}
+                  />
                 </div>
               </div>
             </div>
           </div>
         )}
 
-        {/* No detection state */}
+        {/* In-view instructions when streaming without active sign */}
         {isActive && !prediction && (
-          <div className="absolute bottom-4 left-4 right-4 pointer-events-none">
-            <div className="bg-gray-950/70 backdrop-blur-sm rounded-xl px-4 py-2 text-center border border-gray-800">
-              <p className="text-xs text-gray-400">Sign in view of the camera to recognize gestures…</p>
+          <div className="absolute bottom-3 left-3 right-3 pointer-events-none">
+            <div className="bg-[#14171c] border border-[#2c3542] px-3 py-1.5 text-center rounded-sm">
+              <p className="text-xs text-gray-400 font-mono">
+                Position your hands and upper body within frame to recognize signs.
+              </p>
             </div>
           </div>
         )}
       </div>
 
-      {/* Controls & FPS configuration */}
-      <div className="px-4 py-3 border-t border-gray-800 space-y-3">
+      {/* Controls & Configuration footer */}
+      <div className="px-4 py-3 space-y-3 bg-[#181c22]">
         <div className="flex items-center justify-between text-xs text-gray-400">
           <span className="flex items-center gap-1.5 font-medium">
-            <Sliders className="w-3.5 h-3.5 text-brand-400" />
-            Inference Sampling
+            <SlidersIcon className="w-3.5 h-3.5 text-[#0284c7]" />
+            Inference Frame Rate:
           </span>
-          <div className="flex items-center gap-1 bg-gray-800/80 p-0.5 rounded-lg border border-gray-700/60">
+          <div className="flex items-center gap-1 bg-[#14171c] p-0.5 border border-[#2c3542] rounded-sm">
             {[4, 8, 12, 16].map((rate) => (
               <button
                 key={rate}
                 onClick={() => onFpsChange(rate)}
                 className={cn(
-                  'px-2 py-0.5 rounded text-[11px] font-medium transition-colors',
+                  'px-2 py-0.5 text-xs font-mono rounded-sm transition-colors',
                   fps === rate
-                    ? 'bg-brand-600 text-white font-semibold'
+                    ? 'bg-[#0369a1] text-white font-bold'
                     : 'text-gray-400 hover:text-gray-200',
                 )}
-                title={`Sample frames at ${rate} FPS`}
+                aria-label={`Set inference rate to ${rate} frames per second`}
               >
                 {rate} FPS
               </button>
@@ -188,38 +215,29 @@ export function CameraPanel({
           </div>
         </div>
 
-        <div className="flex gap-3">
-          {!isActive ? (
+        {/* Camera Start / Stop action */}
+        <div>
+          {isActive ? (
             <button
-              className="btn-primary flex-1 justify-center py-2.5 text-sm"
-              onClick={onStart}
-              disabled={status === 'requesting'}
-              aria-label="Start camera"
+              onClick={onStop}
+              className="btn btn-danger w-full justify-center"
+              aria-label="Stop camera stream"
             >
-              <Camera className="w-4 h-4" />
-              {status === 'requesting' ? 'Requesting Permission…' : 'Start Camera'}
+              <VideoOffIcon className="w-4 h-4" />
+              Stop Camera
             </button>
           ) : (
             <button
-              className="btn-danger flex-1 justify-center py-2.5 text-sm"
-              onClick={onStop}
-              aria-label="Stop camera"
+              onClick={onStart}
+              className="btn btn-primary w-full justify-center"
+              aria-label="Start camera stream"
             >
-              <CameraOff className="w-4 h-4" />
-              Stop Camera
+              <VideoIcon className="w-4 h-4" />
+              Start Camera
             </button>
           )}
         </div>
       </div>
-
-      {/* Error banner */}
-      {error && (
-        <div className="px-4 pb-3">
-          <p className="text-sm text-red-400 bg-red-950/40 border border-red-800/80 rounded-lg px-3 py-2">
-            {error}
-          </p>
-        </div>
-      )}
     </div>
   )
 }

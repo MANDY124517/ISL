@@ -1,5 +1,5 @@
 /**
- * usePrediction – manages the inference loop, sentence buffer,
+ * usePrediction: Manages the inference loop, sentence buffer,
  * and conversation history.
  */
 import { useCallback, useEffect, useRef, useState } from 'react'

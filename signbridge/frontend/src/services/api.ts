@@ -1,5 +1,5 @@
 /**
- * SignBridge – API service
+ * SignBridge API Service:
  * Handles all HTTP calls to the FastAPI backend.
  */
 

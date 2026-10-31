@@ -3,37 +3,60 @@ export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        sans: [
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Segoe UI"',
+          'Roboto',
+          '"Helvetica Neue"',
+          'Arial',
+          'sans-serif',
+        ],
+        mono: [
+          '"SFMono-Regular"',
+          'Consolas',
+          '"Liberation Mono"',
+          'Menlo',
+          'Courier',
+          'monospace',
+        ],
+      },
       colors: {
-        brand: {
-          50:  '#eef2ff',
-          100: '#e0e7ff',
-          200: '#c7d2fe',
-          300: '#a5b4fc',
-          400: '#818cf8',
-          500: '#6366f1',
-          600: '#4f46e5',
-          700: '#4338ca',
-          800: '#3730a3',
-          900: '#312e81',
+        surface: {
+          base: '#111418',
+          panel: '#181c22',
+          card: '#1f242c',
+          raised: '#262d37',
+          border: '#2c3542',
+          muted: '#3d4858',
+        },
+        accent: {
+          50: '#f0f7fc',
+          100: '#e0eff9',
+          500: '#0284c7',
+          600: '#0369a1',
+          700: '#075985',
+        },
+        state: {
+          success: '#15803d',
+          successText: '#4ade80',
+          warning: '#b45309',
+          warningText: '#fbbf24',
+          danger: '#b91c1c',
+          dangerText: '#f87171',
         },
       },
-      animation: {
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4,0,0.6,1) infinite',
-        'fade-in': 'fadeIn 0.3s ease-in-out',
-        'slide-up': 'slideUp 0.3s ease-out',
+      borderRadius: {
+        none: '0px',
+        sm: '2px',
+        DEFAULT: '2px',
+        md: '4px',
       },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        slideUp: {
-          '0%': { transform: 'translateY(12px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
+      boxShadow: {
+        none: 'none',
       },
     },
   },
   plugins: [],
 }
-
