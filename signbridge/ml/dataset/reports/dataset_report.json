@@ -1,0 +1,156 @@
+{
+  "dataset_name": "ISLTranslate / iSign Benchmark",
+  "total_videos": 2575,
+  "total_segments": 31222,
+  "corrupt_or_empty_rows": 0,
+  "avg_segments_per_video": 12.13,
+  "max_segments_per_video": 452,
+  "min_segments_per_video": 1,
+  "total_supported_classes": 100,
+  "total_unique_words": 10708,
+  "total_word_tokens": 192966,
+  "largest_class": {
+    "label": "THE",
+    "count": 13273
+  },
+  "smallest_class": {
+    "label": "GO",
+    "count": 261
+  },
+  "imbalance_ratio": 50.85,
+  "potential_imbalance": "YES",
+  "top_30_classes": [
+    [
+      "THE",
+      13273
+    ],
+    [
+      "OF",
+      5378
+    ],
+    [
+      "TO",
+      4907
+    ],
+    [
+      "AND",
+      4871
+    ],
+    [
+      "IN",
+      4219
+    ],
+    [
+      "IS",
+      3026
+    ],
+    [
+      "YOU",
+      2683
+    ],
+    [
+      "IT",
+      1617
+    ],
+    [
+      "FOR",
+      1581
+    ],
+    [
+      "ARE",
+      1566
+    ],
+    [
+      "ON",
+      1501
+    ],
+    [
+      "THAT",
+      1494
+    ],
+    [
+      "OR",
+      1481
+    ],
+    [
+      "WITH",
+      1374
+    ],
+    [
+      "THIS",
+      1232
+    ],
+    [
+      "WAS",
+      1229
+    ],
+    [
+      "PAGE",
+      1221
+    ],
+    [
+      "WE",
+      1171
+    ],
+    [
+      "HE",
+      1149
+    ],
+    [
+      "HAVE",
+      1131
+    ],
+    [
+      "WHAT",
+      1018
+    ],
+    [
+      "ONE",
+      1007
+    ],
+    [
+      "FROM",
+      1003
+    ],
+    [
+      "DO",
+      985
+    ],
+    [
+      "CAN",
+      974
+    ],
+    [
+      "AS",
+      974
+    ],
+    [
+      "YOUR",
+      939
+    ],
+    [
+      "BY",
+      843
+    ],
+    [
+      "THEY",
+      842
+    ],
+    [
+      "BE",
+      809
+    ]
+  ],
+  "sample_sentences": [
+    "Page 111",
+    "Make it shorter.",
+    "One day, Akbar drew a line on the floor and ordered.",
+    "Make this line shorter.",
+    "but don't rub out any part of it.",
+    "No one knew what to do.",
+    "Each minister looked at the line and was puzzled.",
+    "No one could think of any way to make it longer.",
+    "No one could think of how it could be made shorter without erasing it.",
+    "Birbal started smiling. When it was his turn, he went near the line."
+  ]
+}

@@ -1,0 +1,49 @@
+# SignBridge .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+*.egg-info/
+dist/
+*.so
+
+# ML / model artifacts
+ml/models/*.pt
+ml/models/*.onnx
+ml/models/*.tflite
+ml/data/
+
+# Environment
+.env
+*.env.local
+
+# Node / Frontend
+node_modules/
+.pnpm-store/
+frontend/dist/
+frontend/.vite/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dataset (large files – store separately)
+ISLTranslate/Data/
+ISLTranslate/Extracted-Features/
+
+# Logs
+*.log
+logs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+

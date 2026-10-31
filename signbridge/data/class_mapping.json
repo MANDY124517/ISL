@@ -1,0 +1,502 @@
+{
+  "class_000": {
+    "isl_label": "THE",
+    "english": "The",
+    "frequency": 13273
+  },
+  "class_001": {
+    "isl_label": "OF",
+    "english": "Of",
+    "frequency": 5378
+  },
+  "class_002": {
+    "isl_label": "TO",
+    "english": "To",
+    "frequency": 4907
+  },
+  "class_003": {
+    "isl_label": "AND",
+    "english": "And",
+    "frequency": 4871
+  },
+  "class_004": {
+    "isl_label": "IN",
+    "english": "In",
+    "frequency": 4219
+  },
+  "class_005": {
+    "isl_label": "IS",
+    "english": "Is",
+    "frequency": 3026
+  },
+  "class_006": {
+    "isl_label": "YOU",
+    "english": "You",
+    "frequency": 2683
+  },
+  "class_007": {
+    "isl_label": "IT",
+    "english": "It",
+    "frequency": 1617
+  },
+  "class_008": {
+    "isl_label": "FOR",
+    "english": "For",
+    "frequency": 1581
+  },
+  "class_009": {
+    "isl_label": "ARE",
+    "english": "Are",
+    "frequency": 1566
+  },
+  "class_010": {
+    "isl_label": "ON",
+    "english": "On",
+    "frequency": 1501
+  },
+  "class_011": {
+    "isl_label": "THAT",
+    "english": "That",
+    "frequency": 1494
+  },
+  "class_012": {
+    "isl_label": "OR",
+    "english": "Or",
+    "frequency": 1481
+  },
+  "class_013": {
+    "isl_label": "WITH",
+    "english": "With",
+    "frequency": 1374
+  },
+  "class_014": {
+    "isl_label": "THIS",
+    "english": "This",
+    "frequency": 1232
+  },
+  "class_015": {
+    "isl_label": "WAS",
+    "english": "Was",
+    "frequency": 1229
+  },
+  "class_016": {
+    "isl_label": "PAGE",
+    "english": "Page",
+    "frequency": 1221
+  },
+  "class_017": {
+    "isl_label": "WE",
+    "english": "We",
+    "frequency": 1171
+  },
+  "class_018": {
+    "isl_label": "HE",
+    "english": "He",
+    "frequency": 1149
+  },
+  "class_019": {
+    "isl_label": "HAVE",
+    "english": "Have",
+    "frequency": 1131
+  },
+  "class_020": {
+    "isl_label": "WHAT",
+    "english": "What",
+    "frequency": 1018
+  },
+  "class_021": {
+    "isl_label": "ONE",
+    "english": "One",
+    "frequency": 1007
+  },
+  "class_022": {
+    "isl_label": "FROM",
+    "english": "From",
+    "frequency": 1003
+  },
+  "class_023": {
+    "isl_label": "DO",
+    "english": "Do",
+    "frequency": 985
+  },
+  "class_024": {
+    "isl_label": "CAN",
+    "english": "Can",
+    "frequency": 974
+  },
+  "class_025": {
+    "isl_label": "AS",
+    "english": "As",
+    "frequency": 974
+  },
+  "class_026": {
+    "isl_label": "YOUR",
+    "english": "Your",
+    "frequency": 939
+  },
+  "class_027": {
+    "isl_label": "BY",
+    "english": "By",
+    "frequency": 843
+  },
+  "class_028": {
+    "isl_label": "THEY",
+    "english": "They",
+    "frequency": 842
+  },
+  "class_029": {
+    "isl_label": "BE",
+    "english": "Be",
+    "frequency": 809
+  },
+  "class_030": {
+    "isl_label": "SOME",
+    "english": "Some",
+    "frequency": 804
+  },
+  "class_031": {
+    "isl_label": "AT",
+    "english": "At",
+    "frequency": 759
+  },
+  "class_032": {
+    "isl_label": "DASH",
+    "english": "Dash",
+    "frequency": 748
+  },
+  "class_033": {
+    "isl_label": "HOW",
+    "english": "How",
+    "frequency": 705
+  },
+  "class_034": {
+    "isl_label": "THESE",
+    "english": "These",
+    "frequency": 703
+  },
+  "class_035": {
+    "isl_label": "NOT",
+    "english": "Not",
+    "frequency": 689
+  },
+  "class_036": {
+    "isl_label": "WERE",
+    "english": "Were",
+    "frequency": 667
+  },
+  "class_037": {
+    "isl_label": "WHICH",
+    "english": "Which",
+    "frequency": 665
+  },
+  "class_038": {
+    "isl_label": "THERE",
+    "english": "There",
+    "frequency": 659
+  },
+  "class_039": {
+    "isl_label": "SEE",
+    "english": "See",
+    "frequency": 653
+  },
+  "class_040": {
+    "isl_label": "BLANK",
+    "english": "Blank",
+    "frequency": 638
+  },
+  "class_041": {
+    "isl_label": "HIS",
+    "english": "His",
+    "frequency": 635
+  },
+  "class_042": {
+    "isl_label": "AN",
+    "english": "An",
+    "frequency": 586
+  },
+  "class_043": {
+    "isl_label": "NUMBER",
+    "english": "Number",
+    "frequency": 581
+  },
+  "class_044": {
+    "isl_label": "NOW",
+    "english": "Now",
+    "frequency": 576
+  },
+  "class_045": {
+    "isl_label": "WATER",
+    "english": "Water",
+    "frequency": 570
+  },
+  "class_046": {
+    "isl_label": "SHE",
+    "english": "She",
+    "frequency": 559
+  },
+  "class_047": {
+    "isl_label": "THEM",
+    "english": "Them",
+    "frequency": 554
+  },
+  "class_048": {
+    "isl_label": "ALL",
+    "english": "All",
+    "frequency": 546
+  },
+  "class_049": {
+    "isl_label": "ABOUT",
+    "english": "About",
+    "frequency": 535
+  },
+  "class_050": {
+    "isl_label": "MAKE",
+    "english": "Make",
+    "frequency": 527
+  },
+  "class_051": {
+    "isl_label": "OUT",
+    "english": "Out",
+    "frequency": 523
+  },
+  "class_052": {
+    "isl_label": "WILL",
+    "english": "Will",
+    "frequency": 509
+  },
+  "class_053": {
+    "isl_label": "HER",
+    "english": "Her",
+    "frequency": 499
+  },
+  "class_054": {
+    "isl_label": "TWO",
+    "english": "Two",
+    "frequency": 496
+  },
+  "class_055": {
+    "isl_label": "HAS",
+    "english": "Has",
+    "frequency": 491
+  },
+  "class_056": {
+    "isl_label": "MANY",
+    "english": "Many",
+    "frequency": 487
+  },
+  "class_057": {
+    "isl_label": "PICTURE",
+    "english": "Picture",
+    "frequency": 482
+  },
+  "class_058": {
+    "isl_label": "OTHER",
+    "english": "Other",
+    "frequency": 480
+  },
+  "class_059": {
+    "isl_label": "WHEN",
+    "english": "When",
+    "frequency": 479
+  },
+  "class_060": {
+    "isl_label": "LIKE",
+    "english": "Like",
+    "frequency": 474
+  },
+  "class_061": {
+    "isl_label": "PEOPLE",
+    "english": "People",
+    "frequency": 452
+  },
+  "class_062": {
+    "isl_label": "DIFFERENT",
+    "english": "Different",
+    "frequency": 443
+  },
+  "class_063": {
+    "isl_label": "WORDS",
+    "english": "Words",
+    "frequency": 431
+  },
+  "class_064": {
+    "isl_label": "IF",
+    "english": "If",
+    "frequency": 418
+  },
+  "class_065": {
+    "isl_label": "BUT",
+    "english": "But",
+    "frequency": 417
+  },
+  "class_066": {
+    "isl_label": "THEIR",
+    "english": "Their",
+    "frequency": 416
+  },
+  "class_067": {
+    "isl_label": "HERE",
+    "english": "Here",
+    "frequency": 413
+  },
+  "class_068": {
+    "isl_label": "WHO",
+    "english": "Who",
+    "frequency": 412
+  },
+  "class_069": {
+    "isl_label": "ALSO",
+    "english": "Also",
+    "frequency": 401
+  },
+  "class_070": {
+    "isl_label": "FIGURE",
+    "english": "Figure",
+    "frequency": 400
+  },
+  "class_071": {
+    "isl_label": "MY",
+    "english": "My",
+    "frequency": 393
+  },
+  "class_072": {
+    "isl_label": "UP",
+    "english": "Up",
+    "frequency": 393
+  },
+  "class_073": {
+    "isl_label": "FIND",
+    "english": "Find",
+    "frequency": 390
+  },
+  "class_074": {
+    "isl_label": "DID",
+    "english": "Did",
+    "frequency": 387
+  },
+  "class_075": {
+    "isl_label": "SO",
+    "english": "So",
+    "frequency": 381
+  },
+  "class_076": {
+    "isl_label": "WRITE",
+    "english": "Write",
+    "frequency": 364
+  },
+  "class_077": {
+    "isl_label": "HAD",
+    "english": "Had",
+    "frequency": 362
+  },
+  "class_078": {
+    "isl_label": "VERY",
+    "english": "Very",
+    "frequency": 360
+  },
+  "class_079": {
+    "isl_label": "LOOK",
+    "english": "Look",
+    "frequency": 346
+  },
+  "class_080": {
+    "isl_label": "CHILDREN",
+    "english": "Children",
+    "frequency": 331
+  },
+  "class_081": {
+    "isl_label": "INTO",
+    "english": "Into",
+    "frequency": 325
+  },
+  "class_082": {
+    "isl_label": "MORE",
+    "english": "More",
+    "frequency": 313
+  },
+  "class_083": {
+    "isl_label": "TIME",
+    "english": "Time",
+    "frequency": 309
+  },
+  "class_084": {
+    "isl_label": "EACH",
+    "english": "Each",
+    "frequency": 307
+  },
+  "class_085": {
+    "isl_label": "US",
+    "english": "Us",
+    "frequency": 306
+  },
+  "class_086": {
+    "isl_label": "HIM",
+    "english": "Him",
+    "frequency": 304
+  },
+  "class_087": {
+    "isl_label": "THEN",
+    "english": "Then",
+    "frequency": 296
+  },
+  "class_088": {
+    "isl_label": "DAY",
+    "english": "Day",
+    "frequency": 291
+  },
+  "class_089": {
+    "isl_label": "RIGHT",
+    "english": "Right",
+    "frequency": 290
+  },
+  "class_090": {
+    "isl_label": "USE",
+    "english": "Use",
+    "frequency": 287
+  },
+  "class_091": {
+    "isl_label": "WOULD",
+    "english": "Would",
+    "frequency": 284
+  },
+  "class_092": {
+    "isl_label": "SAID",
+    "english": "Said",
+    "frequency": 273
+  },
+  "class_093": {
+    "isl_label": "MADE",
+    "english": "Made",
+    "frequency": 271
+  },
+  "class_094": {
+    "isl_label": "GIVEN",
+    "english": "Given",
+    "frequency": 270
+  },
+  "class_095": {
+    "isl_label": "SOMETHING",
+    "english": "Something",
+    "frequency": 269
+  },
+  "class_096": {
+    "isl_label": "ME",
+    "english": "Me",
+    "frequency": 269
+  },
+  "class_097": {
+    "isl_label": "WHY",
+    "english": "Why",
+    "frequency": 268
+  },
+  "class_098": {
+    "isl_label": "AFTER",
+    "english": "After",
+    "frequency": 267
+  },
+  "class_099": {
+    "isl_label": "GO",
+    "english": "Go",
+    "frequency": 261
+  }
+}

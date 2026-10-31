@@ -1,0 +1,32 @@
+# Root .gitignore for ISL workspace
+
+# Python
+**/__pycache__/
+**/*.py[cod]
+**/*.pyo
+**/.venv/
+**/dist/
+**/*.egg-info/
+**/*.so
+
+# Node / Frontend
+**/node_modules/
+**/.pnpm-store/
+**/dist/
+**/.vite/
+
+# Environment files with sensitive credentials (if any)
+**/.env.local
+**/.env.*.local
+
+# Testing and IDE
+**/.pytest_cache/
+**/*.log
+**/.vscode/
+**/.idea/
+**/*.swp
+Thumbs.db
+.DS_Store
+
+# Temporary keypoint dataset cache (can be regenerated with python ml/dataset/generate_dataset.py)
+# Keep models, keep class mappings, keep evaluation outputs
