@@ -30,3 +30,9 @@ Thumbs.db
 
 # Temporary keypoint dataset cache (can be regenerated with python ml/dataset/generate_dataset.py)
 # Keep models, keep class mappings, keep evaluation outputs
+
+# Windows Batch & PowerShell Launcher Scripts
+*.bat
+*.ps1
+
+

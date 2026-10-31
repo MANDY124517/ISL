@@ -38,6 +38,10 @@ Thumbs.db
 ISLTranslate/Data/
 ISLTranslate/Extracted-Features/
 
+# Scripts
+*.bat
+*.ps1
+
 # Logs
 *.log
 logs/
