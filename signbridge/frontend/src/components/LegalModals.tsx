@@ -148,3 +148,4 @@ export function PrivacyModal({ isOpen, onClose }: ModalProps) {
     </div>
   )
 }
+
